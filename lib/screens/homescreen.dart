@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather'),
+        centerTitle: true,
+        title: const Text('Weather'),
         actions: [
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, '/setting');
             },
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
           )
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
           colors: [
-            Colors.grey.shade900,
-            Colors.black,
+            Color.fromARGB(255, 199, 115, 115),
+            Color.fromARGB(255, 180, 166, 94),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             right: 20,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _cloudIcon(),
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  final weeks = ['1', '2', '3', '1', '2', '3'];
+  final weeks = ['1', '2', '3', '1', '2', '3', '3', '1', '2', '3'];
   _weeklyPrediction() {
     return Expanded(
       child: Container(
@@ -71,10 +71,10 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  final times = ['1', '2', '3', '1', '2', '3'];
+  final times = ['1', '2', '3', '1', '2', '3', '3', '1', '2', '3'];
   _hourlyPrediction() {
     return Container(
-      height: 100,
+      height: 130,
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(color: Colors.white),
@@ -100,6 +100,7 @@ class HomeScreen extends StatelessWidget {
 
   _date() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: const [
         Text('Today'),
         SizedBox(
@@ -107,6 +108,7 @@ class HomeScreen extends StatelessWidget {
         ),
         Text(
           '''20,10,20''',
+          textAlign: TextAlign.center,
         )
       ],
     );
@@ -114,11 +116,9 @@ class HomeScreen extends StatelessWidget {
 
   _location() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: const [
         Icon(Icons.place),
-        SizedBox(
-          width: 10,
-        ),
         Text(
           'Oslo, No',
         )
@@ -129,6 +129,7 @@ class HomeScreen extends StatelessWidget {
   _temperature() {
     return const Text(
       '-10',
+      textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: 80,
         fontWeight: FontWeight.w100,
